@@ -88,6 +88,45 @@ body {
 }
 
 /* Section Styles */
+/* Mobile-first styles */
+body {
+  font-size: 16px;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.menu {
+  display: none; /* Hide by default on mobile */
+}
+
+.menu.visible {
+  display: block; /* Show when the toggle button is clicked */
+}
+
+/* Display menu as a horizontal bar on larger screens */
+@media (min-width: 768px) {
+  .menu {
+    display: flex;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}
 /* Skills Section */
 .skills-item {
   text-align: center;
@@ -130,6 +169,18 @@ ul li {
 .container {
   width: 80%;
   margin: 0 auto;
+}
+
+/* Example layout adjustment */
+.container {
+  display: flex;
+  flex-direction: column; /* Stack elements on smaller screens */
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row; /* Arrange elements side-by-side on larger screens */
+  }
 }
 
 h2 {
