@@ -114,12 +114,12 @@ body {
 }
 
 @media (max-width: 767px) {
-  #navbar ul {
-    display: none; /* Hide default menu on mobile */
+  .menu-toggle {
+    display: block; /* Visible on mobile */
   }
 
-  .menu-toggle {
-    display: block;
+  #navbar ul {
+    display: none; /* Hide full menu on mobile */
   }
 }
 
