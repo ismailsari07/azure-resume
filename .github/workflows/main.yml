@@ -21,7 +21,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch --account-name ismailresumestorage --auth-mode key -d '$web' -s . --overwrite true
+          az storage blob upload-batch --account-name ismailresumestorage --auth-mode key -d '$web' -s ./frontend --overwrite true
 
     # Azure logout
     - name: Logout from Azure
