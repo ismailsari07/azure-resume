@@ -12,21 +12,23 @@
     />
   </head>
   <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-      <div class="container">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#certifications">Certifications</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#view">View</a></li>
-        </ul>
-      </div>
-    </nav>
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="container">
+    <!-- Menu toggle button, visible only on mobile -->
+    <button class="menu-toggle">☰</button>
+    <ul class="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#view">View</a></li>
+    </ul>
+  </div>
+</nav>
 
     <button class="menu-toggle">☰</button>
 <nav class="menu">
@@ -328,3 +330,7 @@
     </footer>
   </body>
 </html>
+// JavaScript to toggle mobile menu
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+  document.querySelector(".menu").classList.toggle("visible");
+});
