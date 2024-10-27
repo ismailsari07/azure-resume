@@ -14,7 +14,6 @@ jobs:
     # Login to Azure
     - uses: azure/login@v1
       with:
-        # Ensure the secrets are set up correctly in GitHub and stored in JSON format with the correct fields
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     # Upload to blob storage
@@ -22,7 +21,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch --account-name ismailresumestorage --account-key ${{ secrets.AZURE_STORAGE_KEY }} -d '$web' -s . --overwrite
+          az storage blob upload-batch --account-name ismailresumestorage --auth-mode key -d '$web' -s . --overwrite
 
     # Azure logout
     - name: Logout from Azure
