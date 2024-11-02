@@ -19,8 +19,8 @@ jobs:
     # Set environment variables for Azure Function URL and Key
     - name: Set up environment variables
       run: |
-        echo "AZURE_FUNCTION_URL=${{ secrets.AZURE_FUNCTION_URL }}" >> $GITHUB_ENV
-        echo "AZURE_FUNCTION_KEY=${{ secrets.AZURE_FUNCTION_KEY }}" >> $GITHUB_ENV
+        sed -i 's|__AZURE_FUNCTION_URL__|'"${{ secrets.AZURE_FUNCTION_URL }}"'|g' ./frontend/app.js
+        sed -i 's|__AZURE_FUNCTION_KEY__|'"${{ secrets.AZURE_FUNCTION_KEY }}"'|g' ./frontend/app.js
 
     # Upload to blob storage
     - name: Upload to blob storage
