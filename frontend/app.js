@@ -10,8 +10,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 });
 
 async function updateVisitorCount() {
-  // URL of the VisitorCounterProxy function
-  const proxyUrl = "https://<https://resume-counter-app.azurewebsites.net/api/VisitorCounterProxy?code=jH5atoM3ASAUsq7CYBTkbYEf3-x0WZzxGh0hBi4opGWfAzFumCELXA%3D%3D"; // Replace with your actual function app name
+  // URL of the VisitorCounterProxy function with the function key
+  const proxyUrl = "https://resume-counter-app.azurewebsites.net/api/VisitorCounterProxy?code=jH5atoM3ASAUsq7CYBTkbYEf3-x0WZzxGh0hBi4opGWfAzFumCELXA%3D%3D";
 
   try {
     // Call the proxy function to fetch the visitor count
