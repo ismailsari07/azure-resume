@@ -16,17 +16,18 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    # Set environment variables for Azure Function URL and Key
+    - name: Set up environment variables
+      run: |
+        echo "AZURE_FUNCTION_URL=${{ secrets.AZURE_FUNCTION_URL }}" >> $GITHUB_ENV
+        echo "AZURE_FUNCTION_KEY=${{ secrets.AZURE_FUNCTION_KEY }}" >> $GITHUB_ENV
+
     # Upload to blob storage
     - name: Upload to blob storage
       uses: azure/CLI@v1
       with:
         inlineScript: |
           az storage blob upload-batch --account-name ismailresumestorage --auth-mode key -d '$web' -s ./frontend --overwrite true
-
-    - name: Build and deploy
-  env:
-    AZURE_FUNCTION_URL: ${{ secrets.AZURE_FUNCTION_URL }}
-    AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
 
     # Azure logout
     - name: Logout from Azure
