@@ -23,6 +23,11 @@ jobs:
         inlineScript: |
           az storage blob upload-batch --account-name ismailresumestorage --auth-mode key -d '$web' -s ./frontend --overwrite true
 
+    - name: Build and deploy
+  env:
+    AZURE_FUNCTION_URL: ${{ secrets.AZURE_FUNCTION_URL }}
+    AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+
     # Azure logout
     - name: Logout from Azure
       run: |
