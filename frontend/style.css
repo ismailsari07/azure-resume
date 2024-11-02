@@ -32,6 +32,14 @@ body {
   z-index: 1000;
 }
 
+#navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -40,6 +48,17 @@ body {
 .logo a {
   color: #0073e6;
   text-decoration: none;
+}
+
+/* View Counter Styles */
+.view-counter {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0073e6;
 }
 
 nav ul {
@@ -147,10 +166,10 @@ img {
 
 /* Certifications Section */
 .certification-list img {
-  width: 100px; /* Adjust width as needed */
+  width: 100px;
   height: auto;
-  vertical-align: middle; /* Aligns with the text */
-  margin-right: 10px; /* Space between logo and text */
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 /* Contact Section */
@@ -221,6 +240,10 @@ footer {
   .container {
     width: 90%;
   }
+
+  .view-counter {
+    right: 4rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -234,5 +257,9 @@ footer {
 
   h2 {
     font-size: 2rem;
+  }
+
+  .view-counter {
+    font-size: 0.9rem;
   }
 }
