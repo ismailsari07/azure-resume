@@ -6,8 +6,8 @@
       "type": "httpTrigger",
       "direction": "in",
       "authLevel": "function",
-      "methods": ["get", "post"]
-      "route" : "visitor-counter"
+      "methods": ["get", "post"],
+      "route": "visitor-counter"
     },
     {
       "name": "$return",
