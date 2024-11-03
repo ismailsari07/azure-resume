@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'backend/**'       # Only trigger when files in 'backend' are changed
+      - '.github/workflows/deploy-backend.yml'  # Also trigger when this workflow file itself is updated
 
 jobs:
   deploy-backend:
