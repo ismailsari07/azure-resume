@@ -5,34 +5,103 @@ on:
     branches:
       - main
     paths:
-      - 'backend/**'       # Only trigger when files in 'backend' are changed
-      - '.github/workflows/deploy-backend.yml'  # Also trigger when this workflow file itself is updated
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
 
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
-
+        
+      - name: Echo repository structure
+        run: |
+          echo "Current directory contents:"
+          ls -la
+          echo "Backend directory contents:"
+          ls -la backend || echo "Backend directory not found"
+          
       - name: Log in to Azure
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
+          
+      - name: Verify Azure Login
+        run: |
+          echo "Verifying Azure login..."
+          az account show
+          
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-
+          
+      - name: Verify Python Setup
+        run: |
+          python --version
+          pip --version
+          
       - name: Install dependencies
         run: |
-          cd backend/VisitorCounterFunction
+          cd backend/VisitorCounterFunction || exit 1
+          echo "Installing requirements from:"
+          pwd
           pip install -r requirements.txt
-
+          pip list
+          
+      - name: Verify Function App Exists
+        run: |
+          echo "Verifying Function App existence..."
+          az functionapp show --name ${{ secrets.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} || echo "Function app not found"
+          
+      - name: Configure Function App Settings
+        uses: Azure/appservice-settings@v1
+        with:
+          app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
+          app-settings-json: |
+            [
+              {
+                "name": "COSMOS_DB_ENDPOINT",
+                "value": "${{ secrets.COSMOS_DB_ENDPOINT }}"
+              },
+              {
+                "name": "COSMOS_DB_KEY",
+                "value": "${{ secrets.COSMOS_DB_KEY }}"
+              },
+              {
+                "name": "FUNCTIONS_WORKER_RUNTIME",
+                "value": "python"
+              },
+              {
+                "name": "WEBSITE_RUN_FROM_PACKAGE",
+                "value": "1"
+              }
+            ]
+            
       - name: Deploy to Azure Function App
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
           package: ./backend/VisitorCounterFunction
+          enable-oryx-build: true
+          scm-do-build-during-deployment: true
+          
+      - name: Verify Deployment
+        run: |
+          echo "Checking function app status..."
+          az functionapp show --name ${{ secrets.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --query state -o tsv
+          echo "Getting function app URL..."
+          az functionapp function show --name ${{ secrets.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --function-name VisitorCounter --query invokeUrlTemplate -o tsv || echo "Could not retrieve function URL"
+          
+      - name: Check Function Logs
+        run: |
+          echo "Fetching recent logs..."
+          az functionapp logs tail --name ${{ secrets.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --limit 50 || echo "Could not retrieve logs"
+          
+      - name: Logout from Azure
+        if: always()
+        run: |
+          echo "Logging out of Azure..."
+          az logout
