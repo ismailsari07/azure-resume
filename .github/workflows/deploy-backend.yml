@@ -3,7 +3,7 @@ name: Deploy Backend Azure Function
 on:
   push:
     branches:
-      - backend-function
+      - main
 
 jobs:
   deploy-backend:
@@ -28,4 +28,4 @@ jobs:
         with:
           app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
           package: ./backend/VisitorCounterFunction
-          publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
+          azure-rm-credentials: ${{ secrets.AZURE_CREDENTIALS }}
