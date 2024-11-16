@@ -1,0 +1,34 @@
+name: Blob storage website CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/main.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Set up environment variables
+      run: |
+        sed -i 's|__AZURE_FUNCTION_URL__|'"${{ secrets.AZURE_FUNCTION_URL }}"'|g' ./frontend/app.js
+        sed -i 's|__AZURE_FUNCTION_KEY__|'"${{ secrets.AZURE_FUNCTION_KEY }}"'|g' ./frontend/app.js
+
+    - name: Upload to blob storage
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob upload-batch --account-name ismailresumestorage --auth-mode key -d '$web' -s ./frontend --overwrite true
+
+    - name: Logout from Azure
+      run: |
+        az logout
+      if: always()
