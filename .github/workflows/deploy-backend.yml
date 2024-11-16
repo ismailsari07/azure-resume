@@ -6,19 +6,13 @@ on:
       - main
     paths:
       - 'backend/**'
-      - '.github/workflows/**'  # This will catch any workflow file changes
+      - '.github/workflows/**'
 
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
     
     steps:
-      # Add debug step to see what triggered the workflow
-      - name: Debug Trigger
-        run: |
-          echo "Triggered by changes in:"
-          echo "${{ github.event.head_commit.modified }}"
-          
       - name: Check out the code
         uses: actions/checkout@v2
         
@@ -30,12 +24,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.9'  # Specify exact version
           
       - name: Install dependencies
         run: |
           cd backend/VisitorCounterFunction
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install --target=".python_packages/lib/site-packages" -r requirements.txt
           
       - name: Configure Function App Settings
         uses: Azure/appservice-settings@v1
@@ -58,10 +53,14 @@ jobs:
               {
                 "name": "WEBSITE_RUN_FROM_PACKAGE",
                 "value": "1"
+              },
+              {
+                "name": "PYTHON_VERSION",
+                "value": "3.9"
               }
             ]
             
-      - name: Deploy to Azure Function App
+      - name: Build and Deploy to Azure Function App
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
