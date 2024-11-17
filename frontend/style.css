@@ -59,6 +59,26 @@ nav a:hover {
   color: #0073e6;
 }
 
+#view-counter {
+  font-size: 1rem; /* Adjust the font size */
+  font-weight: 500; /* Match the weight of other links */
+  color: #333; /* Match the link color */
+  margin-left: auto; /* Push it to the right */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+#view-counter::before {
+  content: "👁 ";
+  margin-right: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  #view-counter {
+    margin-left: 0; /* Reset margin for mobile */
+    text-align: left;
+  }
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
