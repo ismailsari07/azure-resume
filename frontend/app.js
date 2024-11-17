@@ -11,7 +11,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 async function updateVisitorCount() {
   // The Azure Function URL and key will be dynamically replaced via GitHub Actions
-  const proxyUrl = "__AZURE_FUNCTION_URL__?code=__AZURE_FUNCTION_KEY__";
+  const proxyUrl = "__AZURE_FUNCTION_URL__&code=__AZURE_FUNCTION_KEY__";
 
   console.log("Fetching visitor count from:", proxyUrl); // Debug log
 
