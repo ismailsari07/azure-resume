@@ -11,13 +11,19 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 async function updateVisitorCount() {
   // The Azure Function URL and key will be dynamically replaced via GitHub Actions
-  const proxyUrl = "__AZURE_FUNCTION_URL__&code=__AZURE_FUNCTION_KEY__";
+  const proxyUrl = "__AZURE_FUNCTION_URL__?code=__AZURE_FUNCTION_KEY__";
 
   console.log("Fetching visitor count from:", proxyUrl); // Debug log
 
   try {
-    // Call the proxy function to fetch the visitor count
-    const response = await fetch(proxyUrl);
+    // Call the proxy function to fetch the visitor count and increment it
+    const response = await fetch(proxyUrl, {
+      method: "POST", // Use POST to increment the count
+      headers: {
+        "Content-Type": "application/json", // Specify content type
+      },
+    });
+
     console.log("Azure Function response:", response); // Debug log
 
     if (response.ok) {
@@ -26,7 +32,7 @@ async function updateVisitorCount() {
 
       const visitorElement = document.getElementById("visitor-count");
       if (visitorElement) {
-        visitorElement.innerText = `Views: ${data.visitor_count}`;
+        visitorElement.innerText = `👁 Views: ${data.visitor_count}`;
       } else {
         console.error("Visitor count element not found in the DOM.");
       }
