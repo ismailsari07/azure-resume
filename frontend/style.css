@@ -11,11 +11,12 @@ body {
   background-color: #f7f7f7;
   color: #333;
   padding-top: 60px;
+  font-size: 16px;
 }
 
 /* Container */
 .container {
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -27,13 +28,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  padding: 1rem;
+  height: auto;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -46,6 +49,7 @@ nav ul {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  align-items: center;
 }
 
 nav a {
@@ -53,6 +57,8 @@ nav a {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
+  padding: 0.5rem;
+  display: block;
 }
 
 nav a:hover {
@@ -60,11 +66,11 @@ nav a:hover {
 }
 
 #view-counter {
-  font-size: 1rem; /* Adjust the font size */
-  font-weight: 500; /* Match the weight of other links */
-  color: #333; /* Match the link color */
-  margin-left: auto; /* Push it to the right */
-  white-space: nowrap; /* Prevent text from wrapping */
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 #view-counter::before {
@@ -72,16 +78,9 @@ nav a:hover {
   margin-right: 0.2rem;
 }
 
-@media (max-width: 768px) {
-  #view-counter {
-    margin-left: 0; /* Reset margin for mobile */
-    text-align: left;
-  }
-}
-
 /* Hero Section */
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,46 +90,52 @@ nav a:hover {
   color: white;
   text-align: center;
   margin-top: -60px;
+  padding: 2rem 1rem;
 }
 
 .center-content {
   text-align: center;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
 }
 
 .center-content h1 {
-  font-size: 6rem;
+  font-size: clamp(2rem, 8vw, 6rem);
   font-weight: 700;
   margin: 0.5rem 0;
+  word-wrap: break-word;
 }
 
 .center-content p {
-  font-size: 2.5rem;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
   font-weight: 400;
   margin-top: 1rem;
 }
 
 .center-content hr {
-  width: 200px;
+  width: min(200px, 80%);
   margin: 1.5rem auto;
   border: 1px solid white;
 }
 
 /* Section Styles */
 .section {
-  padding: 80px 0;
+  padding: 60px 0;
 }
 
 h2 {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
   color: #0073e6;
   margin-bottom: 40px;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   color: #0073e6;
-  margin: 30px 0 20px 0;
+  margin: 20px 0 15px 0;
 }
 
 /* Skills Section */
@@ -140,45 +145,70 @@ h3 {
 }
 
 .skills-content li {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  margin-bottom: 12px;
   list-style-position: inside;
+  padding-left: 1rem;
 }
 
 /* Experience, Education Items */
 .experience-item,
 .education-item {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experience-item:hover,
+.education-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Images */
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 /* Projects Section */
 .projects img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   vertical-align: middle;
-  margin-right: 10px;
+  margin: 0.5rem;
+  display: inline-block;
 }
 
 /* Certifications Section */
+.certification-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
 .certification-list img {
-  width: 100px; /* Adjust width as needed */
+  width: 80px;
   height: auto;
-  vertical-align: middle; /* Aligns with the text */
-  margin-right: 10px; /* Space between logo and text */
+  vertical-align: middle;
+  margin: 0.5rem;
+  display: inline-block;
 }
 
 /* Contact Section */
+.contact {
+  text-align: center;
+}
+
 .contact img {
-  width: 300px;
-  height: 100px;
-  vertical-align: middle;
-  margin-right: 10px;
+  max-width: 250px;
+  height: auto;
+  margin: 1rem auto;
 }
 
 /* Footer */
@@ -198,61 +228,118 @@ footer {
   font-size: 1.5rem;
   cursor: pointer;
   color: #333;
+  padding: 0.5rem;
+  z-index: 1001;
 }
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+  body {
+    padding-top: 50px;
+  }
+
   .menu-toggle {
     display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
   }
 
   nav ul {
     display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 50px;
     left: 0;
     width: 100%;
     background-color: white;
     flex-direction: column;
     padding: 1rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    gap: 0.75rem;
   }
 
   nav ul.visible {
     display: flex;
+    animation: slideDown 0.3s ease-out;
   }
 
   nav ul li {
-    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
   }
 
-  .center-content h1 {
-    font-size: 3rem;
+  nav ul li:last-child {
+    border-bottom: none;
   }
 
-  .center-content p {
-    font-size: 1.5rem;
+  #view-counter {
+    text-align: center;
+    margin: 0.5rem 0;
+    width: 100%;
   }
 
-  h2 {
-    font-size: 2.5rem;
+  .section {
+    padding: 40px 0;
   }
 
-  .container {
-    width: 90%;
+  .certification-list {
+    grid-template-columns: 1fr;
   }
 }
 
+/* Small Mobile Devices */
 @media (max-width: 480px) {
-  .center-content h1 {
-    font-size: 2.5rem;
+  .container {
+    width: 95%;
+    padding: 0 0.5rem;
   }
 
-  .center-content p {
-    font-size: 1.2rem;
+  .section {
+    padding: 30px 0;
   }
 
-  h2 {
-    font-size: 2rem;
+  .skills-content ul {
+    padding-left: 10px;
+  }
+
+  .experience-item,
+  .education-item {
+    padding: 1rem;
+  }
+
+  .certification-list,
+  .projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact img {
+    max-width: 200px;
+  }
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
