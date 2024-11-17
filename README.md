@@ -33,16 +33,5 @@ Visitor Counter Function: Azure Function Endpoint
 
 Repository Structure
 
-├── frontend/              # HTML, CSS, and JavaScript for the front-end
-│   ├── index.html         # Main HTML file
-│   ├── style.css          # Styling for the resume
-│   └── app.js             # JavaScript for dynamic features (e.g., visitor counter)
-├── backend/               # Azure Function app code
-│   └── VisitorCounterFunction/
-│       ├── __init__.py    # Main function logic
-│       ├── requirements.txt # Python dependencies
-│       └── local.settings.json # Local configuration for testing
-├── .github/workflows/     # CI/CD pipeline definitions
-│   ├── main.yml           # Workflow for front-end deployment
-│   └── deploy-backend.yml # Workflow for back-end deployment
-├── README.md              # Project documentation
+![image](https://github.com/user-attachments/assets/0c5592b1-be56-43b8-9798-8b926bd87d41)
+
