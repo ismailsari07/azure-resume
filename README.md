@@ -1,19 +1,19 @@
-Cloud Resume Challenge
+**Cloud Resume Challenge**
 
 Welcome to my Cloud Resume Challenge project! This repository showcases my journey in completing the Cloud Resume Challenge while demonstrating my expertise in cloud technologies, infrastructure as code, and web development.
 
-Project Overview 
+**Project Overview **
 
 This project combines front-end and back-end development, cloud services, and CI/CD automation to build and host an interactive resume with a visitor counter powered by Azure Functions and Cosmos DB.
 
-Features
+**Features**
 
 	•	Responsive Front-End: Built using HTML, CSS, and JavaScript for seamless viewing across devices.
 	•	Visitor Counter: Tracks the number of visitors to the site, stored in Cosmos DB and displayed dynamically using Azure Functions.
 	•	Cloud Hosting: Deployed on Azure Blob Storage as a static website.
 	•	CI/CD Pipeline: Fully automated deployment using GitHub Actions.
 
- Tech Stack
+** Tech Stack**
 
 	1.	Front-End:
 	•	HTML, CSS, JavaScript
@@ -28,10 +28,10 @@ Features
 	•	GitHub Actions for automated testing and deployment
 	•	Secrets management for secure credentials
 
-Live Website: https://www.ismailarici.net
-Visitor Counter Function: Azure Function Endpoint
+**Live Website:** https://www.ismailarici.net
+**Visitor Counter Function:** Azure Function Endpoint
 
-Repository Structure
+**Repository Structure**
 
 ![image](https://github.com/user-attachments/assets/0c5592b1-be56-43b8-9798-8b926bd87d41)
 
