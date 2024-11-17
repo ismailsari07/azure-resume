@@ -2,7 +2,7 @@
 
 Welcome to my Cloud Resume Challenge project! This repository showcases my journey in completing the Cloud Resume Challenge while demonstrating my expertise in cloud technologies, infrastructure as code, and web development.
 
-**Project Overview **
+**Project Overview**
 
 This project combines front-end and back-end development, cloud services, and CI/CD automation to build and host an interactive resume with a visitor counter powered by Azure Functions and Cosmos DB.
 
@@ -13,7 +13,7 @@ This project combines front-end and back-end development, cloud services, and CI
 	•	Cloud Hosting: Deployed on Azure Blob Storage as a static website.
 	•	CI/CD Pipeline: Fully automated deployment using GitHub Actions.
 
-** Tech Stack**
+**Tech Stack**
 
 	1.	Front-End:
 	•	HTML, CSS, JavaScript
