@@ -11,18 +11,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
-    - uses: azure/login@v1
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Login to Azure
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Set up environment variables
+    - name: Replace Azure Function Secrets in app.js
       run: |
         sed -i 's|__AZURE_FUNCTION_URL__|'"${{ secrets.AZURE_FUNCTION_URL }}"'|g' ./frontend/app.js
         sed -i 's|__AZURE_FUNCTION_KEY__|'"${{ secrets.AZURE_FUNCTION_KEY }}"'|g' ./frontend/app.js
 
-    - name: Upload to blob storage
+    - name: Upload to Blob Storage
       uses: azure/CLI@v1
       with:
         inlineScript: |
