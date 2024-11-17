@@ -13,14 +13,20 @@ async function updateVisitorCount() {
   // The Azure Function URL and key will be dynamically replaced via GitHub Actions
   const proxyUrl = "__AZURE_FUNCTION_URL__?code=__AZURE_FUNCTION_KEY__";
 
+  console.log("Fetching visitor count from:", proxyUrl); // Debug log
+
   try {
     // Call the proxy function to fetch the visitor count
     const response = await fetch(proxyUrl);
+    console.log("Azure Function response:", response); // Debug log
+
     if (response.ok) {
       const data = await response.json();
+      console.log("Visitor count data:", data); // Debug log
+
       const visitorElement = document.getElementById("visitor-count");
       if (visitorElement) {
-        visitorElement.innerText = data.count;
+        visitorElement.innerText = `Views: ${data.visitor_count}`;
       } else {
         console.error("Visitor count element not found in the DOM.");
       }
