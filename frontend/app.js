@@ -10,8 +10,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 });
 
 async function updateVisitorCount() {
-  // URL of the VisitorCounterProxy function with the function key
-  const proxyUrl = "https://resume-counter-app.azurewebsites.net/api/VisitorCounterProxy?code=jH5atoM3ASAUsq7CYBTkbYEf3-x0WZzxGh0hBi4opGWfAzFumCELXA%3D%3D";
+  // The Azure Function URL and key will be dynamically replaced via GitHub Actions
+  const proxyUrl = "__AZURE_FUNCTION_URL__?code=__AZURE_FUNCTION_KEY__";
 
   try {
     // Call the proxy function to fetch the visitor count
