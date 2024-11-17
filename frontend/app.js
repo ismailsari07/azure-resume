@@ -18,7 +18,12 @@ async function updateVisitorCount() {
     const response = await fetch(proxyUrl);
     if (response.ok) {
       const data = await response.json();
-      document.getElementById("visitor-count").innerText = data.count; // Adjust the ID if needed
+      const visitorElement = document.getElementById("visitor-count");
+      if (visitorElement) {
+        visitorElement.innerText = data.count;
+      } else {
+        console.error("Visitor count element not found in the DOM.");
+      }
     } else {
       console.error("Error fetching visitor count:", response.statusText);
     }
