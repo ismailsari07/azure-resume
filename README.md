@@ -1,10 +1,10 @@
-**Cloud Resume Challenge**
+**Azure Cloud Resume**
 
-Welcome to my Cloud Resume Challenge project! This repository showcases my journey in completing the Cloud Resume Challenge while demonstrating my expertise in cloud technologies, infrastructure as code, and web development.
+Welcome to my Cloud Resume! This repository showcases my journey in completing the Cloud Resume Challenge while demonstrating my expertise in cloud technologies, infrastructure as code, and web development.
 
 **Project Overview**
 
-This project combines front-end and back-end development, cloud services, and CI/CD automation to build and host an interactive resume with a visitor counter powered by Azure Functions and Cosmos DB.
+This project combines front-end and back-end development, Azure cloud services, and CI/CD automation to build and host an interactive resume with a visitor counter powered by Azure Functions and Cosmos DB.
 
 **Features**
 
@@ -29,7 +29,6 @@ This project combines front-end and back-end development, cloud services, and CI
 		•Secrets management for secure credentials
 
 **Live Website:** https://www.ismailarici.net
-**Visitor Counter Function:** Azure Function Endpoint
 
 **Repository Structure**
 
