@@ -169,6 +169,13 @@ h3 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.experience-item ul li,
+.education-item ul li {
+    font-size: clamp(1rem, 3vw, 1.2rem); 
+    margin-bottom: 12px; 
+    padding-left: 1rem;
+}
+
 .experience-item:hover,
 .education-item:hover {
   transform: translateY(-2px);
