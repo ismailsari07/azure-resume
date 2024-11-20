@@ -233,9 +233,10 @@ img {
 }
 
 .contact img {
-  max-width: 250px;
-  height: auto;
-  margin: 1rem auto;
+  width: auto;
+  height: 80px;
+  display: inline-block;
+  object-fit: contain;
 }
 
 /* Footer */
