@@ -197,6 +197,28 @@ img {
   margin: 0.5rem;
   display: inline-block;
 }
+.projects ul {
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
+    line-height: 1.6;                      /* Improve readability */
+    margin: 0;                             /* Remove unwanted margins */
+    padding-left: 1.5rem;                  /* Add space for bullets */
+}
+
+.projects li {
+    margin-bottom: 12px;                   /* Add spacing between items */
+}
+
+.projects p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Match the list font size */
+    margin-bottom: 1rem;                  /* Add spacing below the text */
+}
+
+.projects h2 {
+    font-size: clamp(2rem, 6vw, 3.5rem); /* Match section headers */
+    color: #0073e6;                     /* Ensure consistent color */
+    text-align: center;                 /* Align header */
+    margin-bottom: 1rem;                /* Add spacing below header */
+}
 
 /* Certifications Section */
 .certification-list {
