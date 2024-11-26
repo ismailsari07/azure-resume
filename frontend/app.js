@@ -2,11 +2,6 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const navList = document.querySelector('nav ul');
 
-// Toggle menu
-// Mobile menu functionality
-const menuToggle = document.querySelector('.menu-toggle');
-const navList = document.querySelector('nav ul');
-
 // Ensure menuToggle and navList exist before adding event listeners
 if (menuToggle && navList) {
   // Toggle menu
@@ -35,6 +30,8 @@ if (menuToggle && navList) {
     });
   });
 }
+
+// Rest of the code...
 
 // Handle window resize
 let resizeTimer;
